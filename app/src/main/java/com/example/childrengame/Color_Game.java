@@ -28,7 +28,8 @@ public class Color_Game extends AppCompatActivity {
     int BackgroundColors[] = {0xFFFF0000, 0xFF008000, 0xFF0000FF, 0xFFFFFF00, 0xFFFFA500, 0xFFFFC0CB, 0xFF800080, 0xFFFFFFFF, 0xFF000000, 0xFF808080, 0xFF964B00, 0xFF40E0D0, 0xFF00FFFF, 0xFFFFD700, 0xFFC0C0C0, 0xFF00FFFF};
     String HebrewColors[]={"אדום" ,"ירוק","כחול","צהוב","כתום","ורוד","סגול", "לבן" , "שחור" , "אפור" , "חום" , "טורקיז" , "אקווה" , "זהב", "כסף"};
     String EnglishColors[]={"red" ,"green","blue","yellow","orange","pink","purple", "white" , "black" , "grey" , "brown" , "turquoise" , "aqua" , "gold", "silver"};
-    ArrayList<Integer> optionsList= new ArrayList<Integer>(Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14) );
+    ArrayList<Integer> optionsList= new ArrayList<Integer>( );
+
     TextView hebrewText;
     TextView ColorBackground;
     EditText AnserEnglish;
@@ -63,7 +64,10 @@ public class Color_Game extends AppCompatActivity {
         //red ,green,blue,yellow,orange,pink,purple,white,black,grey,brown,turquoise,aqua,gold,silver
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_game);
-
+        //init the available colors to use
+        for (int i = 0; i < BackgroundColors.length; i++) {
+            optionsList.add(i);
+        }
         hebrewText=findViewById(R.id.color_hebrew);
         ColorBackground=findViewById(R.id.color_game_img);
         AnserEnglish=findViewById(R.id.answer_text_color);
