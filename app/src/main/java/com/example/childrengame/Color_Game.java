@@ -32,7 +32,7 @@ public class Color_Game extends AppCompatActivity {
 
     TextView hebrewText;
     TextView ColorBackground;
-    EditText AnserEnglish;
+    EditText AnswerEnglish;
 
 
     //after replacing color , view should change
@@ -70,7 +70,7 @@ public class Color_Game extends AppCompatActivity {
         }
         hebrewText=findViewById(R.id.color_hebrew);
         ColorBackground=findViewById(R.id.color_game_img);
-        AnserEnglish=findViewById(R.id.answer_text_color);
+        AnswerEnglish=findViewById(R.id.answer_text_color);
         //if we already was at the game and just rotate the screen , we need to restore the game
         if(savedInstanceState!=null)
         {
@@ -98,28 +98,28 @@ public class Color_Game extends AppCompatActivity {
         findViewById(R.id.Color_Btn_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ans=AnserEnglish.getText().toString().toLowerCase();
+                String ans=AnswerEnglish.getText().toString().toLowerCase();
                 if(EnglishColors[randomNumber].equals(ans))
                 {// in case you right
                     grade++;
                     try {
                         //put it in green when answer is right
-                        AnserEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
-                        AnserEnglish.setText("you right!");
-                        AnserEnglish.setTypeface(null, Typeface.BOLD);
+                        AnswerEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
+                        AnswerEnglish.setText("you right!");
+                        AnswerEnglish.setTypeface(null, Typeface.BOLD);
                         final Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                AnserEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        AnserEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
+                                        AnswerEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
                                         handler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                AnserEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                                AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
                                             }
                                         }, 100);
                                     }
@@ -131,30 +131,22 @@ public class Color_Game extends AppCompatActivity {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                    AnserEnglish.setText("");
-                    AnserEnglish.setTypeface(Typeface.DEFAULT);
-                    randomNumber=RandNumber();
-                    if(randomNumber==-1)
-                        EndGame();
-                    SetController(randomNumber);
-
-
                 }else//in case you faild
                 {
-                    AnserEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
+                    AnswerEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
                     final Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            AnserEnglish.setBackgroundColor(Color.TRANSPARENT);
+                            AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    AnserEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
+                                    AnswerEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
                                     handler.postDelayed(new Runnable() {
                                         @Override
                                         public void run() {
-                                            AnserEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                            AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
                                         }
                                     }, 150);
                                 }
@@ -162,8 +154,8 @@ public class Color_Game extends AppCompatActivity {
                         }
                     }, 150);
                 }
-                AnserEnglish.setText("");
-                AnserEnglish.setTypeface(Typeface.DEFAULT);
+                AnswerEnglish.setText("");
+                AnswerEnglish.setTypeface(Typeface.DEFAULT);
                 randomNumber=RandNumber();
                 if(randomNumber==-1)
                     EndGame();
