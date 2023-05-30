@@ -4,9 +4,13 @@ import static java.lang.Thread.sleep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +59,7 @@ public class Eitan_game extends AppCompatActivity {
     int grade=0;
     int roundNumber=0;
 
+    // the function set on the controller the values and the answer , the location of the right ans change any time randomly
     public void SetControllers(int SentIndex)
     {
         //randomaly we choose the two options locations -random -1 or 2
@@ -64,6 +69,7 @@ public class Eitan_game extends AppCompatActivity {
         OptionTwo.setText(SentencesOpt[SentIndex][3-randomNumber]);
     }
 
+    //take randomal number from the available one ,and set it and the controllers
     public int SetRound()
     {
         if(optionsList.size()!=0&& !(roundNumber>=10)) {
@@ -76,10 +82,48 @@ public class Eitan_game extends AppCompatActivity {
         }else
             return -1;
     }
+    //end game and return to the menu
     public void EndGame()
     {
         Intent HomePage =new Intent(Eitan_game.this,MainActivity.class);
         startActivity(HomePage);
+    }
+    //this animation should show after every press , its fades in and then out , and then we skip to the next question/end game
+    private void startFadeAnimation() {
+
+        // Fade in animation
+        ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(v, "alpha", 0f, 1f);
+        fadeInAnimator.setDuration(1000);
+        fadeInAnimator.setInterpolator(new AccelerateInterpolator());
+
+        // Fade out animation
+        ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(v, "alpha", 1f, 0f);
+        fadeOutAnimator.setDuration(1000);
+        fadeOutAnimator.setInterpolator(new AccelerateInterpolator());
+
+        // Chain the animations
+        fadeInAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // After the fade in animation ends, start the fade out animation
+                fadeOutAnimator.start();
+            }
+        });
+
+        fadeOutAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                // After the fade out animation ends, hide the image
+                v.setVisibility(View.GONE);
+                if(SetRound()==-1)
+                {
+                    EndGame();
+                }
+            }
+        });
+
+        // Start the fade in animation
+        fadeInAnimator.start();
     }
 
 
@@ -99,81 +143,61 @@ public class Eitan_game extends AppCompatActivity {
         //init the first load
         SetRound();
 
+        //in case of click on btn1
         findViewById(R.id.Eitan_btn1).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View z) {
                 if(OptionOne.getText().equals(SentencesOpt[randomNumber][3]))
                 {
+                    //its true give a grade and show v
                     grade++;
-                    v.setBackgroundResource(R.drawable.checkmarkv);
+                    v.setBackgroundResource(R.drawable.checkmarkvv);
                     v.setVisibility(View.VISIBLE);
+                    startFadeAnimation();
 
                 }
                 else
                 {
+                    //its false show x
                     v.setBackgroundResource(R.drawable.xmark);
                     v.setVisibility(View.VISIBLE);
-
-
-
-                }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(SetRound()==-1)
-                {
-                    EndGame();
-                }
-
+                    startFadeAnimation();
 
 
                 }
+            }
             });
+        //in case of click on btn2
         findViewById(R.id.Eitan_btn2).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View z) {
                 if(OptionTwo.getText().equals(SentencesOpt[randomNumber][3]))
                 {
+                    //its true give a grade and show v
                     grade++;
+                    v.setBackgroundResource(R.drawable.checkmarkvv);
                     v.setVisibility(View.VISIBLE);
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    startFadeAnimation();
 
-                    if(SetRound()==-1)
-                    {
-                        EndGame();
-                    }
+
                 }
                 else
                 {
+                    //its false show x
                     v.setBackgroundResource(R.drawable.xmark);
                     v.setVisibility(View.VISIBLE);
+                    startFadeAnimation();
 
                 }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                if(SetRound()==-1)
-                {
-                    EndGame();
-                }
+
 
 
 
             }
+
         });
 
 
-
-
-
-
     }
+
 }

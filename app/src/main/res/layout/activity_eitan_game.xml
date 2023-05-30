@@ -10,78 +10,76 @@
 
     <TextView
         android:id="@+id/title_Eithan_game"
-        android:layout_width="375dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="263dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="93dp"
         android:fontFamily="@font/coming_soon"
         android:text="Chose the correct answer"
         android:textAlignment="center"
         android:textColor="#D30000"
         android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/v_img"
+        app:layout_constraintBottom_toTopOf="@+id/Eitan_game_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Eitan_game_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginBottom="128dp"
+        android:background="@android:color/transparent"
         android:text="אני ___? "
         android:textAlignment="center"
-        android:textSize="30dp"
         android:textColor="@color/black"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/Eitan_btn1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintTop_toBottomOf="@+id/title_Eithan_game" />
 
     <Button
         android:id="@+id/Eitan_btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+
         android:layout_marginBottom="356dp"
         android:backgroundTint="#3A8CCC"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Eitan_btn2"
-        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/Eitan_game_text" />
 
     <Button
         android:id="@+id/Eitan_btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="356dp"
         android:backgroundTint="#3A8CCC"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintStart_toEndOf="@+id/Eitan_btn1"
 
-        />
+        app:layout_constraintBaseline_toBaselineOf="@+id/Eitan_btn1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Eitan_btn1" />
 
     <ImageView
         android:id="@+id/v_img"
-        android:layout_width="120dp"
-        android:layout_height="119dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="244dp"
+        android:layout_width="194dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="160dp"
+
         android:background="@drawable/checkmarkvv"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/Eitan_btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_Eithan_game"
-
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
 

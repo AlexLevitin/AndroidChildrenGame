@@ -13,6 +13,7 @@ public class LoadingScreen extends AppCompatActivity {
 
     ImageView loadingPic;
     TextView welcomeText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
