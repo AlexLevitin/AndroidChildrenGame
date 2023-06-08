@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +58,18 @@ public class Color_Game extends AppCompatActivity {
     public void EndGame()
     {
         Intent HomePage =new Intent(Color_Game.this,MainActivity.class);
+        saveScore();
         startActivity(HomePage);
+    }
+
+    public void saveScore()
+    {
+        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences.Editor sedt = sp.edit();
+        sedt.putInt("ColorsScore", grade);
+        sedt.commit();
+        Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

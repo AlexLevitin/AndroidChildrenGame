@@ -8,12 +8,14 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,7 +88,18 @@ public class Eitan_game extends AppCompatActivity {
     public void EndGame()
     {
         Intent HomePage =new Intent(Eitan_game.this,MainActivity.class);
+        saveScore();
         startActivity(HomePage);
+    }
+
+    public void saveScore()
+    {
+        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences.Editor sedt = sp.edit();
+        sedt.putInt("EitanScore", grade);
+        sedt.commit();
+        Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
+
     }
     //this animation should show after every press , its fades in and then out , and then we skip to the next question/end game
     private void startFadeAnimation() {

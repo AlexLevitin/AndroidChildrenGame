@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    TextView scoreView;
+    int totalScore;
 
 
 
@@ -18,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        scoreView=findViewById(R.id.total_score);
+
+        loadScore();
+
+
         //connecting button click to memory game
         findViewById(R.id.ButtonMemory).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,5 +64,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void loadScore()
+    {
+        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        totalScore = sp.getInt("ColorsScore", 0) + sp.getInt("EitanScore", 0) + sp.getInt("LettersScore", 0);
+        scoreView.setText("Total Score: " + totalScore);
     }
 }

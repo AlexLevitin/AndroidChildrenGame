@@ -3,6 +3,7 @@ package com.example.childrengame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -75,8 +77,20 @@ public class Letters_complete extends AppCompatActivity {
     {
         Intent HomePage =new Intent(Letters_complete.this,MainActivity.class);
         startActivity(HomePage);
+        saveScore();
         finish();
     }
+    public void saveScore()
+    {
+        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences.Editor sedt = sp.edit();
+        sedt.putInt("LettersScore", grade);
+        sedt.commit();
+        Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
+
+
+    }
+
     private void submitText(String text) {
         String ans=text.toLowerCase();
         if(letters[randomNumber][1].equals(ans))
