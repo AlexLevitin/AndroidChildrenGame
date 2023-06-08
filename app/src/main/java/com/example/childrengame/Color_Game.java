@@ -89,8 +89,11 @@ public class Color_Game extends AppCompatActivity {
         if(!FirstTime)
         {
             randomNumber=RandNumber();
-            if(randomNumber==-1)
+            if(randomNumber==-1) {
                 EndGame();
+                finish();
+                return;
+            }
             SetController(randomNumber);
             FirstTime=true;
         }
@@ -157,8 +160,11 @@ public class Color_Game extends AppCompatActivity {
                 AnswerEnglish.setText("");
                 AnswerEnglish.setTypeface(Typeface.DEFAULT);
                 randomNumber=RandNumber();
-                if(randomNumber==-1)
+                if(randomNumber==-1) {
                     EndGame();
+                    finish();
+                    return;
+                }
                 SetController(randomNumber);
 
 

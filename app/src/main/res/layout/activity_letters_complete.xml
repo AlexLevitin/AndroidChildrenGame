@@ -30,6 +30,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="272dp"
         android:fontFamily="@font/coming_soon"
+        android:backgroundTint="@color/white"
         android:text="to do "
         android:textAlignment="center"
         android:textColor="#D30000"
@@ -42,8 +43,9 @@
 
     <ImageView
         android:id="@+id/color_complete_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="271dp"
+        android:layout_height="271dp"
         android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
