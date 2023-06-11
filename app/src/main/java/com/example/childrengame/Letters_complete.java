@@ -84,17 +84,17 @@ public class Letters_complete extends AppCompatActivity {
     }
     public void saveScore()
     {
-        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences sp = getSharedPreferences("ChildrenGameScore", MODE_PRIVATE);
+        int savedValue = sp.getInt("key", 0);
         SharedPreferences.Editor sedt = sp.edit();
-        sedt.putInt("LettersScore", grade);
+        sedt.putInt("key", savedValue+grade);
         sedt.commit();
         Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
-
 
     }
 
     private void submitText(String text) {
-        String ans=text.toLowerCase();
+        String ans=text.toLowerCase().trim();
         if(letters[randomNumber][1].equals(ans))
         {
             // in case you right
