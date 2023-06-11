@@ -16,11 +16,9 @@
         android:textAlignment="center"
         android:textColor="#D30000"
         android:textSize="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -29,8 +27,8 @@
         android:layout_height="82dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="272dp"
-        android:fontFamily="@font/coming_soon"
         android:backgroundTint="@color/white"
+        android:fontFamily="@font/coming_soon"
         android:text="to do "
         android:textAlignment="center"
         android:textColor="#D30000"
@@ -47,7 +45,7 @@
         android:layout_width="271dp"
         android:layout_height="271dp"
         android:layout_marginTop="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/letters_complete_hebrew"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,11 +61,11 @@
         android:layout_marginTop="22dp"
         android:background="#00FFFFFF"
         android:hint="Enter the correct word"
-        android:textColorHint="@color/black"
-        android:singleLine="true"
         android:inputType="textPersonName"
-        android:textColor="#D30000"
+        android:singleLine="true"
         android:textAlignment="center"
+        android:textColor="#D30000"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
