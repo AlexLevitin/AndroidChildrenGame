@@ -94,9 +94,10 @@ public class Eitan_game extends AppCompatActivity {
 
     public void saveScore()
     {
-        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences sp = getSharedPreferences("ChildrenGameScore", MODE_PRIVATE);
+        int savedValue = sp.getInt("key", 0);
         SharedPreferences.Editor sedt = sp.edit();
-        sedt.putInt("EitanScore", grade);
+        sedt.putInt("key", savedValue+grade);
         sedt.commit();
         Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
 

@@ -9,7 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 public class MainActivity extends AppCompatActivity {
 
     TextView scoreView;
@@ -21,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        SharedPreferences sp = getSharedPreferences("ChildrenGameScore", MODE_PRIVATE);
+        SharedPreferences.Editor sedt = sp.edit();
+        sedt.putInt("key",0);
         scoreView=findViewById(R.id.total_score);
 
         loadScore();
@@ -68,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadScore()
     {
-        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
-        totalScore = sp.getInt("ColorsScore", 0) + sp.getInt("EitanScore", 0) + sp.getInt("LettersScore", 0);
+        SharedPreferences sp = getSharedPreferences("ChildrenGameScore", 0);
+        //totalScore = sp.getInt("key", 0) + sp.getInt("EitanScore", 0) + sp.getInt("LettersScore", 0);
+        totalScore=sp.getInt("key",0);
         scoreView.setText("Total Score: " + totalScore);
     }
 }

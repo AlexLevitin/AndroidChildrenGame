@@ -64,9 +64,10 @@ public class Color_Game extends AppCompatActivity {
 
     public void saveScore()
     {
-        SharedPreferences sp = getSharedPreferences("ChildrenGame", 0);
+        SharedPreferences sp = getSharedPreferences("ChildrenGameScore", MODE_PRIVATE);
+        int savedValue = sp.getInt("key", 0);
         SharedPreferences.Editor sedt = sp.edit();
-        sedt.putInt("ColorsScore", grade);
+        sedt.putInt("key", savedValue+grade);
         sedt.commit();
         Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
 
@@ -114,7 +115,7 @@ public class Color_Game extends AppCompatActivity {
         findViewById(R.id.Color_Btn_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ans=AnswerEnglish.getText().toString().toLowerCase();
+                String ans=AnswerEnglish.getText().toString().toLowerCase().trim();
                 if(EnglishColors[randomNumber].equals(ans))
                 {// in case you right
                     grade++;
