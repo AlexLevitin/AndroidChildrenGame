@@ -23,7 +23,7 @@ public class MemoryGame extends AppCompatActivity {
     private List<Button> selectedCards; // List to store currently selected cards
     private int roundsRemaining; // Number of rounds remaining
     private int grade; // Player's score
-
+    private int matches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class MemoryGame extends AppCompatActivity {
 
         // Initialize other variables
         selectedCards = new ArrayList<>();
-        roundsRemaining = 10;
+        roundsRemaining = 3;
         grade = 0;
     }
     private List<Integer> getRandomUniqueCards(int count) {
@@ -105,6 +105,7 @@ public class MemoryGame extends AppCompatActivity {
         // Set default background to hide the cards
         for (Button button : buttons) {
             button.setBackgroundResource(R.drawable.card_back);
+            button.setEnabled(true);
 
         }
     }
@@ -121,6 +122,8 @@ public class MemoryGame extends AppCompatActivity {
             Integer cardName = selectedNames.get(i);
             buttons.get(firstIndex).setBackgroundResource(cardName);
             buttons.get(firstIndex).setTag(cardName);
+            buttons.get(firstIndex).setVisibility(View.VISIBLE);
+
 
             randomIndex = new Random().nextInt(available.size());
             int secondIndex = available.get(randomIndex);
@@ -128,7 +131,7 @@ public class MemoryGame extends AppCompatActivity {
             cardName = selectedNames.get(i);
             buttons.get(secondIndex).setBackgroundResource(cardName);
             buttons.get(secondIndex).setTag(cardName);
-
+            buttons.get(secondIndex).setVisibility(View.VISIBLE);
 
         }
 
@@ -146,6 +149,7 @@ public class MemoryGame extends AppCompatActivity {
                 hideCards();
             }
         }, 1500);
+        matches=0;
     }
 
 
@@ -181,10 +185,15 @@ public class MemoryGame extends AppCompatActivity {
         // Check if the selected cards match
         if (card1.getTag().equals(card2.getTag())) {
             // Match found, increment the score and disable the matched cards
-            grade++;
+            matches++;
             card1.setEnabled(false);
             card2.setEnabled(false);
-            selectedCards.clear();
+            new Handler().postDelayed(() ->{
+                        card1.setVisibility(View.INVISIBLE);
+                        card2.setVisibility(View.INVISIBLE);
+                        selectedCards.clear();
+                    },200);
+
         } else {
             // No match, hide the selected cards after a short delay
             new Handler().postDelayed(new Runnable() {
@@ -194,15 +203,26 @@ public class MemoryGame extends AppCompatActivity {
                     card2.setBackgroundResource(R.drawable.card_back);
                     selectedCards.clear();
                 }
-            }, 1000);
+            }, 250);
         }
+        new Handler().postDelayed(() ->{
+        if(matches==4)
+        {
+            grade++;
+            roundsRemaining--;
+            // Check if the game is over
+            if (roundsRemaining == 0) {
+                endGame();
+            }
+            else
+                startRound();
 
-        roundsRemaining--;
-
-        // Check if the game is over
-        if (roundsRemaining == 0) {
-            endGame();
         }
+        },500);
+
+
+
+
     }
 
     private void endGame() {
