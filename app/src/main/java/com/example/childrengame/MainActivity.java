@@ -77,6 +77,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.VidButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent VidAc =new Intent(MainActivity.this,Video.class);
+                startActivity(VidAc);
+
+            }
+        });
+
     }
 
     public void loadScore()
