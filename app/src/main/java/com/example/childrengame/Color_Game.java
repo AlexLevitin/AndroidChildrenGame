@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
@@ -72,6 +73,77 @@ public class Color_Game extends AppCompatActivity {
         Toast.makeText(this, "You got: " + grade + " points", Toast.LENGTH_SHORT).show();
 
     }
+    public void checkAns()
+    {
+        String ans = AnswerEnglish.getText().toString().toLowerCase().trim();
+        if (EnglishColors[randomNumber].equals(ans)) {// in case you right
+            grade++;
+            try {
+                //put it in green when answer is right
+                AnswerEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
+                AnswerEnglish.setText("you right!");
+                AnswerEnglish.setTypeface(null, Typeface.BOLD);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                AnswerEnglish.setBackgroundColor(Color.parseColor("#5FEF37"));
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                    }
+                                }, 100);
+                            }
+                        }, 100);
+                    }
+                }, 100);
+
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else//in case you faild
+        {
+            AnswerEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            AnswerEnglish.setBackgroundColor(Color.parseColor("#FF0000"));
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                }
+                            }, 150);
+                        }
+                    }, 150);
+                }
+            }, 150);
+        }
+        AnswerEnglish.setText("");
+        AnswerEnglish.setTypeface(Typeface.DEFAULT);
+        randomNumber = RandNumber();
+        if (randomNumber == -1) {
+            EndGame();
+            finish();
+            return;
+        }
+        SetController(randomNumber);
+
+
+
+
+}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +184,21 @@ public class Color_Game extends AppCompatActivity {
             FirstTime=true;
         }
 
-        findViewById(R.id.Color_Btn_submit).setOnClickListener(new View.OnClickListener() {
+        AnswerEnglish.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // Check if the Enter key is pressed
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
+                    // Perform the submission logic here
+                    String text = AnswerEnglish.getText().toString();
+                    checkAns();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+       /* findViewById(R.id.Color_Btn_submit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String ans=AnswerEnglish.getText().toString().toLowerCase().trim();
@@ -185,7 +271,7 @@ public class Color_Game extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
 
 
