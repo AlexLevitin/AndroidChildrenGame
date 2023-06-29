@@ -24,6 +24,11 @@ public class MemoryGame extends AppCompatActivity {
     private int roundsRemaining; // Number of rounds remaining
     private int grade; // Player's score
     private int matches;
+    @Override
+    public void onBackPressed()
+    {
+        endGame();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -60,6 +60,11 @@ public class Eitan_game extends AppCompatActivity {
     int randomNumber;
     int grade=0;
     int roundNumber=0;
+    @Override
+    public void onBackPressed()
+    {
+        EndGame();
+    }
 
     // the function set on the controller the values and the answer , the location of the right ans change any time randomly
     public void SetControllers(int SentIndex)

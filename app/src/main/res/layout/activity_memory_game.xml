@@ -28,8 +28,6 @@
         android:layout_height="100dp"
         android:layout_marginStart="76dp"
         android:layout_marginTop="12dp"
-
-        android:text="Button"
         app:layout_constraintEnd_toStartOf="@+id/card2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_mem_game" />
@@ -40,7 +38,6 @@
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="96dp"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/card5"
@@ -54,9 +51,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="96dp"
         android:layout_marginBottom="25dp"
-
-        android:text="Button"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -71,9 +65,6 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-
-        android:text="Button"
-
         app:layout_constraintEnd_toStartOf="@+id/card6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card3" />
@@ -84,7 +75,6 @@
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="96dp"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/card3"
         app:layout_constraintTop_toBottomOf="@+id/card2" />
@@ -96,7 +86,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="96dp"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/card1"
         app:layout_constraintTop_toBottomOf="@+id/title_mem_game" />
@@ -108,7 +97,6 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="20dp"
-        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/card8"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +110,6 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Button"
         app:layout_constraintEnd_toStartOf="@+id/card4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

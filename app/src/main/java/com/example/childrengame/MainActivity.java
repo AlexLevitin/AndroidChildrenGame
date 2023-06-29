@@ -16,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
     TextView scoreView;
     int totalScore;
 
+    @Override
+    public void onBackPressed() {
+        // Close the app
+        finishAffinity();
+    }
+
 
 
     @Override
@@ -63,6 +69,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent Eitan_game =new Intent(MainActivity.this,Eitan_game.class);
                 startActivity(Eitan_game);
+
+            }
+        });
+
+        //connecting button click to sens SMS
+        findViewById(R.id.SmsButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Send_SMS =new Intent(MainActivity.this,Send_SMS.class);
+                startActivity(Send_SMS);
+
+            }
+        });
+
+        findViewById(R.id.VidButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent VidAc =new Intent(MainActivity.this,Video.class);
+                startActivity(VidAc);
 
             }
         });

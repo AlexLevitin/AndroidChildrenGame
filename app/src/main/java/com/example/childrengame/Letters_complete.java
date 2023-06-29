@@ -56,6 +56,11 @@ public class Letters_complete extends AppCompatActivity {
     ImageView imgView;
     EditText AnswerEnglish;
 
+    @Override
+    public void onBackPressed()
+    {
+        EndGame();
+    }
     //after replacing letter , view should change
     public void SetController(int letterindex)
     {

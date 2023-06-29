@@ -37,6 +37,11 @@ public class Color_Game extends AppCompatActivity {
     TextView ColorBackground;
     EditText AnswerEnglish;
 
+    @Override
+    public void onBackPressed()
+    {
+        EndGame();
+    }
 
     //after replacing color , view should change
     public void SetController(int color)
