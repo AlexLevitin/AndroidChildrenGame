@@ -67,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //connecting button click to sens SMS
+        findViewById(R.id.SmsButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent Send_SMS =new Intent(MainActivity.this,Send_SMS.class);
+                startActivity(Send_SMS);
+
+            }
+        });
+
     }
 
     public void loadScore()

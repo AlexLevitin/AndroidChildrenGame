@@ -98,4 +98,26 @@
         app:layout_constraintTop_toBottomOf="@+id/title_main"
         tools:ignore="MissingConstraints"></Button>
 
+    <ImageView
+        android:id="@+id/SmsButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="48dp"
+        android:src="@drawable/sms_pic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonColors"
+        app:layout_constraintEnd_toStartOf="@+id/VidButton"/>
+    />
+
+    <ImageView
+        android:id="@+id/VidButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/SmsButton"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWords"
+        android:src="@drawable/video_pic"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
