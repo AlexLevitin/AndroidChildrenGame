@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "912244814791",
+    "project_id": "childrengame-9d007",
+    "storage_bucket": "childrengame-9d007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912244814791:android:012474cd18dbc66fb09fe2",
+        "android_client_info": {
+          "package_name": "com.example.childrengame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912244814791-6nih2mb8lb2v2s2dofigo1qu46ekbug2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzhEJ8P41jvAhgzJk6bGNT7x6xMVzUAYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912244814791-6nih2mb8lb2v2s2dofigo1qu46ekbug2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
