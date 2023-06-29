@@ -16,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
     TextView scoreView;
     int totalScore;
 
+    @Override
+    public void onBackPressed() {
+        // Close the app
+        finishAffinity();
+    }
+
 
 
     @Override
