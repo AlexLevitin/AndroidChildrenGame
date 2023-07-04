@@ -1,17 +1,25 @@
 package com.example.childrengame;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
+
 public class MainActivity extends AppCompatActivity {
+    int SMS_REQUEST = 1;
 
     TextView scoreView;
     int totalScore;
@@ -78,8 +86,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent Send_SMS =new Intent(MainActivity.this,Send_SMS.class);
-                startActivity(Send_SMS);
+                if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+                    startActivity(Send_SMS);
+                }
+                else {
+                    ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                            android.Manifest.permission.SEND_SMS,
+                    },SMS_REQUEST);
 
+                }
             }
         });
 
@@ -87,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent VidAc =new Intent(MainActivity.this,Video.class);
-                startActivity(VidAc);
+                    startActivity(VidAc);
 
             }
         });
@@ -100,5 +115,17 @@ public class MainActivity extends AppCompatActivity {
         //totalScore = sp.getInt("key", 0) + sp.getInt("EitanScore", 0) + sp.getInt("LettersScore", 0);
         totalScore=sp.getInt("key",0);
         scoreView.setText("Total Score: " + totalScore);
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == SMS_REQUEST) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent Send_SMS = new Intent(MainActivity.this, Send_SMS.class);
+                startActivity(Send_SMS);
+            } else
+                Toast.makeText(MainActivity.this, "Need Permissions", Toast.LENGTH_LONG).show();
+        }
+
     }
 }
