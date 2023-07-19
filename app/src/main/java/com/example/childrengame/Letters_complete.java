@@ -113,7 +113,7 @@ public class Letters_complete extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                        AnswerEnglish.setBackgroundColor(Color.WHITE);
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -121,7 +121,7 @@ public class Letters_complete extends AppCompatActivity {
                                 handler.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                        AnswerEnglish.setBackgroundColor(Color.WHITE);
                                     }
                                 }, 100);
                             }
@@ -151,7 +151,7 @@ public class Letters_complete extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                    AnswerEnglish.setBackgroundColor(Color.WHITE);
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -159,7 +159,7 @@ public class Letters_complete extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    AnswerEnglish.setBackgroundColor(Color.TRANSPARENT);
+                                    AnswerEnglish.setBackgroundColor(Color.WHITE);
                                 }
                             }, 150);
                         }
